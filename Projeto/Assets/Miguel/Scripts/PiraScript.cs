@@ -19,11 +19,22 @@ public class PiraScript : BossAbstract
     [Header("Laser Debbug")]
     float alpha;
     bool laserOn;
+    [SerializeField] private Material piramidMaterial;
+    float morrendoFloat = 5;
+    [SerializeField] float morrendoSpeed = 0.1f;
+    [SerializeField] List<Renderer> renderes;
 
     private void Awake()
     {
+        piramidMaterial.SetFloat("_Saturacao", 5);
+        piramidMaterial.SetFloat("_alphaPiramide", 0);
+        foreach (Renderer rend in renderes)
+        {
+            rend.material = piramidMaterial;
+        }
         SetCurrentTimer();
         SetRayActive(false);
+        StartCoroutine(Dead());
     }
 
     private void Update()
@@ -99,5 +110,22 @@ public class PiraScript : BossAbstract
     void SetCurrentTimer()
     {
         m_currentTimer = Random.Range(m_rangeTimer.x, m_rangeTimer.y);
+    }
+
+    IEnumerator Dead()
+    {
+        while(true)
+        {
+            morrendoFloat -= morrendoSpeed;
+            if (morrendoFloat > 0)
+            {
+                piramidMaterial.SetFloat("_Saturacao", morrendoFloat);
+            }
+            else
+            {
+                piramidMaterial.SetFloat("_alphaPiramide", morrendoFloat * -1 / 4);
+            }
+            yield return new WaitForSeconds(0.05f);
+        }
     }
 }
