@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        
+        rb ??= GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
