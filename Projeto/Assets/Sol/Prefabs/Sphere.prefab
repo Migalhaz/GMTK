@@ -240,3 +240,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.01
   effect: {fileID: 8909569638600326743}
+  bulletSpeed: 10

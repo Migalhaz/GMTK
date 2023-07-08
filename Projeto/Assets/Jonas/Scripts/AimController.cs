@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class AimController : MonoBehaviour
 {
@@ -10,17 +11,39 @@ public class AimController : MonoBehaviour
         { new Vector3(0, 0), new Vector3(0, 0), new Vector3(0, 0), },
         { new Vector3(0, 0), new Vector3(0, 0), new Vector3(0, 0), },
     };
-    [SerializeField] GameObject player;
-
-    Vector3 moveDir;
     Vector3 position;
+    
     int inputX;
     int inputY;
+    [SerializeField] GameObject bullet;
+    GameObject bulletInstance;
+    [SerializeField, Min(1)]float bulletSpeed;
+    [SerializeField] GameObject player;
 
-    private void Start()
+    [Header("FireLoad Attributes")]
+    [SerializeField] float minSpeed;
+    [SerializeField] float maxSpeed;
+    [SerializeField] float minTime;
+    [SerializeField] float maxTime;
+    public bool isLoading;
+
+    private void Update()
+    {
+        inputX = (int)Input.GetAxisRaw("Horizontal");
+        inputY = (int)Input.GetAxisRaw("Vertical");
+        Debug.Log("Spot retornado: " + GetSpot());
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Fire();
+        }
+    }
+
+    
+    public Vector3 GetSpot()
     {
         position = transform.position;
-        aimSpot[0, 0] = new Vector3(position.x -1 , position.y, position.z - 1);
+        aimSpot[0, 0] = new Vector3(position.x - 0.9f, position.y, position.z - 0.9f);
         aimSpot[1, 0] = new Vector3(position.x, position.y, position.z - 1);
         aimSpot[2, 0] = new Vector3(position.x + 1, position.y, position.z - 1);
         aimSpot[0, 1] = new Vector3(position.x - 1, position.y, position.z);
@@ -29,18 +52,35 @@ public class AimController : MonoBehaviour
         aimSpot[0, 2] = new Vector3(position.x - 1, position.y, position.z + 1);
         aimSpot[1, 2] = new Vector3(position.x, position.y, position.z + 1);
         aimSpot[2, 2] = new Vector3(position.x + 1, position.y, position.z + 1);
-    }
 
-    private void Update()
-    {
-        inputX = (int)Input.GetAxisRaw("Horizontal");
-        inputY = (int)Input.GetAxisRaw("Vertical");
-        Debug.Log("Spot retornado: " + GetSpot());
-    }
-    public Vector3 GetSpot()
-    {            
         return aimSpot[inputX +1, inputY + 1];
     }
 
+    void Fire(float bulletSpeed)
+    {
+        bulletInstance = Instantiate(bullet, GetSpot(), Quaternion.identity);
+        Physics.IgnoreCollision(GetComponentInParent<Collider>(), bulletInstance.GetComponent<Collider>());
+
+        if(inputX == 0 && inputY == 0)
+        {
+            bulletInstance.GetComponent<Rigidbody>().velocity = new Vector3(bulletSpeed, 0, bulletSpeed);
+        }
+        else
+        {
+        bulletInstance.GetComponent<Rigidbody>().velocity = new Vector3(inputX * bulletSpeed, 0, inputY * bulletSpeed);
+        }
+         
+    }
+
+    float LoadFire()
+    {
+        float finalSpeed = minSpeed;
+        while (Input.GetKeyDown(KeyCode.C))
+        {
+            isLoading = true;
+            finalSpeed++;
+        }
+        return finalSpeed;
+    }
 
 }

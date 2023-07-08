@@ -8,10 +8,11 @@ public class Bullet : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] VisualEffect effect;
     float arco;
+    
 
     void Start()
     {
-        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 3);
+        
     }
 
     private void FixedUpdate()
