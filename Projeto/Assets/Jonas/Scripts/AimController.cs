@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering.Universal.Internal;
 using UnityEngine.UIElements;
 
 public class AimController : MonoBehaviour
@@ -23,25 +24,55 @@ public class AimController : MonoBehaviour
     [SerializeField] GameObject spear;
 
     [Header("FireLoad Attributes")]
-    [SerializeField] float minSpeed;
-    [SerializeField] float maxSpeed;
     [SerializeField] float minTime;
     [SerializeField] float maxTime;
-    public bool isLoading;
+    [SerializeField] float loadingSpeed;
+    [SerializeField] float loadingTime;
+    [SerializeField] bool isLoading;
+    [SerializeField] float speedBase;
+    [SerializeField] int speedReduce;
 
     private void Update()
     {
         inputX = (int)Input.GetAxisRaw("Horizontal");
         inputY = (int)Input.GetAxisRaw("Vertical");
-        Debug.Log("Spot retornado: " + GetSpot());
+        
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKey(KeyCode.C))
         {
-            Fire(maxSpeed);
+            isLoading = true;
+            
+        }
+        else
+        {
+            if(Input.GetKeyUp(KeyCode.C))
+            {
+                isLoading = false;
+                if (loadingTime > minTime)
+                {                  
+                    Debug.Log(loadingTime);
+                    ForceReverse();
+                    Fire(loadingTime);
+                    
+                }                               
+                loadingTime = 0;
+                
+            }
+            
         }
     }
 
-    
+    private void FixedUpdate()
+    {
+        if(isLoading && loadingTime < maxTime)
+        {
+            
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            loadingTime += loadingSpeed;
+        }
+    }
+
+
     public Vector3 GetSpot()
     {
         position = transform.position;
@@ -60,29 +91,28 @@ public class AimController : MonoBehaviour
 
     void Fire(float bulletSpeed)
     {
+        if (isLoading) { return; }
         spear.transform.position = GetSpot();
         Physics.IgnoreCollision(GetComponentInParent<Collider>(), spear.GetComponent<Collider>());
 
         if(inputX == 0 && inputY == 0)
         {
-            spear.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -bulletSpeed);
+            spear.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            spear.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -bulletSpeed * speedBase),ForceMode.Impulse);
         }
         else
         {
-            spear.GetComponent<Rigidbody>().velocity = new Vector3(inputX * bulletSpeed, 0, inputY * bulletSpeed);
+            spear.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            spear.GetComponent<Rigidbody>().AddForce(new Vector3(inputX * bulletSpeed * speedBase, 0, inputY * bulletSpeed * speedBase), ForceMode.Impulse);
         }
          
     }
 
-    float LoadFire()
+    void ForceReverse()
     {
-        float finalSpeed = minSpeed;
-        while (Input.GetKeyDown(KeyCode.C))
-        {
-            isLoading = true;
-            finalSpeed++;
-        }
-        return finalSpeed;
-    }
+        Vector3 reverseSpeed = spear.GetComponent<Rigidbody>().velocity;
 
+        spear.GetComponent<Rigidbody>().AddForce(reverseSpeed/speedReduce, ForceMode.Impulse);
+        Debug.Log(reverseSpeed);
+    }
 }
