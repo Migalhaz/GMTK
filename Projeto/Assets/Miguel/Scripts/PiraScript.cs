@@ -40,6 +40,7 @@ public class PiraScript : BossAbstract
     {
         m_currentSpeed += m_rotateSpeed;
         m_eulerAngles.Set(transform.eulerAngles.x, m_currentSpeed, transform.eulerAngles.z);
+        m_currentSpeed = m_eulerAngles.y;
         transform.eulerAngles = m_eulerAngles;
     }
 
@@ -55,7 +56,9 @@ public class PiraScript : BossAbstract
         m_canTakeDamage = true;
         yield return new WaitForSeconds(m_attackDelay * 0.5f);
         SetRayActive(true);
+        //raio ative
         yield return new WaitForSeconds(m_attackDelay * 0.5f);
+        //raio desative
         SetRayActive(false);
         m_isAttacking = false;
         m_canTakeDamage = false;
