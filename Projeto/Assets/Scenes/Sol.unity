@@ -156,7 +156,7 @@ MonoBehaviour:
   - {fileID: 1787810334}
   - {fileID: 919120034}
   m_attackDelay: 2
-  m_rangeTimer: {x: 3, y: 6}
+  m_rangeTimer: {x: 2, y: 5}
   m_rotateSpeed: 0.4
 --- !u!4 &233109570
 Transform:
