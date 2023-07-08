@@ -16,6 +16,10 @@ public class PiraScript : BossAbstract
     float m_currentTimer;
     Vector3 m_eulerAngles;
 
+    [Header("Laser Debbug")]
+    float alpha;
+    bool laserOn;
+
     private void Awake()
     {
         SetCurrentTimer();
@@ -25,7 +29,6 @@ public class PiraScript : BossAbstract
     private void Update()
     {
         m_currentTimer -= Time.deltaTime;
-
         if (m_currentTimer > 0)
         {
             Rotate();
@@ -33,6 +36,15 @@ public class PiraScript : BossAbstract
         else
         {
             Attack();
+        }
+
+        if (laserOn)
+        {
+            foreach (GameObject ray in m_attackRay)
+            {
+                alpha += Mathf.Lerp(0, 1, m_attackDelay / 2 * Time.deltaTime);
+                ray.GetComponent<Renderer>().material.SetFloat("_alpha", alpha);
+            }
         }
     }
 
@@ -67,9 +79,18 @@ public class PiraScript : BossAbstract
 
     void SetRayActive(bool active)
     {
-        foreach (GameObject ray in m_attackRay)
+        foreach(GameObject ray in m_attackRay)
         {
-            ray.SetActive(active);
+            if (active)
+            {
+                alpha = 0;
+                laserOn = true;
+            }
+            else
+            {
+                laserOn = false;
+                ray.GetComponent<Renderer>().material.SetFloat("_alpha", 1);
+            }
         }
     }
 
