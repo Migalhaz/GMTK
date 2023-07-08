@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] VisualEffect effect;
     float arco;
-    
+    Rigidbody rb;
 
     void Start()
     {
@@ -18,7 +18,10 @@ public class Bullet : MonoBehaviour
     private void FixedUpdate()
     {
         arco += speed;
-        if (arco >= 1) arco = 0;
+        if (arco >= 1) { 
+            arco = 0;
+            rb.velocity = new Vector3(0, 0, 0);
+        }
         effect.SetFloat("Arco", arco);
     }
 }
