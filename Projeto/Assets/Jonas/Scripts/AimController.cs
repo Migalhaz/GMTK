@@ -15,10 +15,12 @@ public class AimController : MonoBehaviour
     
     int inputX;
     int inputY;
-    [SerializeField] GameObject bullet;
     GameObject bulletInstance;
     [SerializeField, Min(1)]float bulletSpeed;
     [SerializeField] GameObject player;
+
+    [Header("FireLoad Attributes")]
+    [SerializeField] GameObject spear;
 
     [Header("FireLoad Attributes")]
     [SerializeField] float minSpeed;
@@ -35,7 +37,7 @@ public class AimController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Fire();
+            Fire(maxSpeed);
         }
     }
 
@@ -58,16 +60,16 @@ public class AimController : MonoBehaviour
 
     void Fire(float bulletSpeed)
     {
-        bulletInstance = Instantiate(bullet, GetSpot(), Quaternion.identity);
-        Physics.IgnoreCollision(GetComponentInParent<Collider>(), bulletInstance.GetComponent<Collider>());
+        spear.transform.position = GetSpot();
+        Physics.IgnoreCollision(GetComponentInParent<Collider>(), spear.GetComponent<Collider>());
 
         if(inputX == 0 && inputY == 0)
         {
-            bulletInstance.GetComponent<Rigidbody>().velocity = new Vector3(bulletSpeed, 0, bulletSpeed);
+            spear.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -bulletSpeed);
         }
         else
         {
-        bulletInstance.GetComponent<Rigidbody>().velocity = new Vector3(inputX * bulletSpeed, 0, inputY * bulletSpeed);
+            spear.GetComponent<Rigidbody>().velocity = new Vector3(inputX * bulletSpeed, 0, inputY * bulletSpeed);
         }
          
     }
