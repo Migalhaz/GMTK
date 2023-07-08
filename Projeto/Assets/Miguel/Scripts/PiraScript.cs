@@ -85,11 +85,13 @@ public class PiraScript : BossAbstract
             {
                 alpha = 0;
                 laserOn = true;
+                ray.GetComponent<Collider>().enabled = true;
             }
             else
             {
                 laserOn = false;
                 ray.GetComponent<Renderer>().material.SetFloat("_alpha", 1);
+                ray.GetComponent<Collider>().enabled = false;
             }
         }
     }
