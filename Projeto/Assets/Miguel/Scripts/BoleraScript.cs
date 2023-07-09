@@ -12,10 +12,12 @@ public class BoleraScript : BossAbstract
     [SerializeField] Vector4 m_planePosition;
     [SerializeField] GameObject m_semNucleo;
 
+    private Rigidbody rig;
     void Start()
     {
         m_player ??= GameObject.FindGameObjectWithTag("Player").transform;
         SetLookDirection();
+        TryGetComponent(out rig);
     }
 
     public void Setup(Vector3 size)
@@ -25,7 +27,19 @@ public class BoleraScript : BossAbstract
 
     void Update()
     {
-        Move();
+        RotationAnim();
+        MovePhysics();
+        //Move();
+    }
+   void RotationAnim()
+    {
+        m_currentAngle += m_rotateSpeed;
+        m_model.eulerAngles = m_currentAngle * Vector3.one;
+    }
+
+    void MovePhysics()
+    {
+        rig.velocity = (m_moveSpeed * Time.deltaTime * transform.forward);
     }
 
     void Move()
@@ -35,10 +49,24 @@ public class BoleraScript : BossAbstract
         transform.Translate(m_moveSpeed * Time.deltaTime * Vector3.forward);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Teste ");
         SetLookDirection();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Teste ");
+        rig.velocity = Vector3.zero;
+
+        ContactPoint point = collision.GetContact(0);
+
+        Vector3 forw = transform.forward;
+        Vector3 mirrored = Vector3.Reflect(forw, point.normal);
+        transform.rotation = Quaternion.LookRotation(mirrored, transform.up);
+
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
     }
 
     public void SetLookDirection()
