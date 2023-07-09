@@ -74,15 +74,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 9144636927647182568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94936c5e8938692479bc789f36135d9c, type: 3}
+  m_Script: {fileID: 11500000, guid: a3bcfee9a9bb661408ec63cf1ae89c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 0}
   m_moveSpeed: 250
   m_rotateSpeed: 1
   m_model: {fileID: 5553404840944849710}
-  m_planePosition: {x: -90, y: 90, z: -90, w: 90}
-  m_semNucleo: {fileID: 3003080810706731850, guid: e409b39eb7c4f2847807e4c3e38400ae,
+  m_planePosition: {x: 0, y: 0, z: 0, w: 0}
+  m_semNucleo: {fileID: 3003080810706731850, guid: cfabdf9b16f5f0b4d87584effd70185e,
     type: 3}
 --- !u!114 &-8707732968572188712
 MonoBehaviour:
@@ -93,10 +93,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9144636927647182568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fbd12bb3256c754b9d13c5069322c71, type: 3}
+  m_Script: {fileID: 11500000, guid: dbd7c9211df28d045aea2b69650ab9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bossScript: {fileID: 0}
+  m_bossScript: {fileID: 9144636927647182546}
 --- !u!1001 &8184547616558177987
 PrefabInstance:
   m_ObjectHideFlags: 0
