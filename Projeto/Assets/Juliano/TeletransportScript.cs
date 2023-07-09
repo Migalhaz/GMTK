@@ -6,6 +6,8 @@ public class TeletransportScript : MonoBehaviour
 {
     [SerializeField] private GameObject lance;
     [SerializeField] public static bool lance_field = false;
+
+    public PlayerCollider pc;
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -15,6 +17,7 @@ public class TeletransportScript : MonoBehaviour
         {
             if (lance_field)
             {
+                if (!pc.canTeleportForever && !pc.canTeleport) return;
                 transform.position = lance.transform.position;
 
                 //Destroy(lance);

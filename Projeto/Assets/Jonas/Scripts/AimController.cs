@@ -32,6 +32,7 @@ public class AimController : MonoBehaviour
     [SerializeField] float speedBase;
     [SerializeField] int speedReduce;
 
+    public PlayerCollider pc;
 
     private void Update()
     {
@@ -95,12 +96,16 @@ public class AimController : MonoBehaviour
 
     void Fire(float bulletSpeed)
     {
+        if (!pc.canShotForever && !pc.canShot) return;
+        pc.canShot = false;
+        pc.canTeleport = true;
         if (isLoading) { return; }
         spear.transform.position = GetSpot();
         spear.transform.rotation = Quaternion.Euler(0, player.transform.rotation.eulerAngles.y, 0);
         spear.SetActive(true);
         TeletransportScript.lance_field = true;
         Physics.IgnoreCollision(GetComponentInParent<Collider>(), spear.GetComponent<Collider>());
+        StartCoroutine(waitSpear());
 
         if(inputX == 0 && inputY == 0)
         {
@@ -114,6 +119,12 @@ public class AimController : MonoBehaviour
             spear.GetComponent<Rigidbody>().AddForce(new Vector3(inputX * bulletSpeed * speedBase, 0, inputY * bulletSpeed * speedBase), ForceMode.Impulse);
         }
          
+    }
+
+    IEnumerator waitSpear()
+    {
+        yield return new WaitForSeconds(1/2);
+        Physics.IgnoreCollision(GetComponentInParent<Collider>(), spear.GetComponent<Collider>(), false);
     }
 
     void ForceReverse()
