@@ -7,7 +7,9 @@ public class PiraScript : BossAbstract
     [Header("Attack Settings")]
     [SerializeField] List<GameObject> m_attackRay;
     bool m_isAttacking;
-    [SerializeField, Min(0)] float m_attackDelay;
+    [SerializeField, Min(0)] float m_attackDelayOne;
+    [SerializeField, Min(0)] float m_attackDelayTwo;
+    float currentAttackDelay;
 
     [Header("Rotate Settings")]
     [SerializeField] Vector2 m_rangeTimer;
@@ -28,6 +30,8 @@ public class PiraScript : BossAbstract
     int olhoDirection = 0;
     [SerializeField] List<BoxCollider> colisores;
     [SerializeField] GameObject soul;
+    enum State { One, Two }
+    State m_currentState;
 
     private void Awake()
     {
@@ -41,9 +45,44 @@ public class PiraScript : BossAbstract
         }
         SetCurrentTimer();
         SetRayActive(false);
+
+        SetState();
+    }
+
+    void SetState()
+    {
+        m_currentState = Random.value >= .5f ? State.One : State.Two;
+        currentAttackDelay = m_currentState == State.One ? m_attackDelayOne : m_attackDelayTwo;
     }
 
     private void Update()
+    {
+        switch (m_currentState)
+        {
+            case State.One:
+                StateOne();
+                break;
+            case State.Two:
+                StateTwo();
+                break;
+        }
+
+        if (laserOn)
+        {
+            foreach (GameObject ray in m_attackRay)
+            {
+                alpha += Mathf.Lerp(0, 1, currentAttackDelay * .5f * Time.deltaTime);
+                ray.GetComponent<Renderer>().material.SetFloat("_alpha", alpha);
+            }
+        }
+
+        olhoAbertura += Time.deltaTime * olhoDirection * 100;
+        if (olhoAbertura < 0) olhoAbertura = 0;
+        if (olhoAbertura > 100) olhoAbertura = 100;
+        olho.SetBlendShapeWeight(0, olhoAbertura);
+    }
+
+    void StateOne()
     {
         m_currentTimer -= Time.deltaTime;
         if (m_currentTimer > 0)
@@ -55,19 +94,17 @@ public class PiraScript : BossAbstract
             Attack();
         }
 
-        if (laserOn)
-        {
-            foreach (GameObject ray in m_attackRay)
-            {
-                alpha += Mathf.Lerp(0, 1, m_attackDelay / 2 * Time.deltaTime);
-                ray.GetComponent<Renderer>().material.SetFloat("_alpha", alpha);
-            }
-        }
+        
+    }
 
-        olhoAbertura += Time.deltaTime * olhoDirection * 100;
-        if (olhoAbertura < 0) olhoAbertura = 0;
-        if (olhoAbertura > 100) olhoAbertura = 100;
-        olho.SetBlendShapeWeight(0, olhoAbertura);
+    void StateTwo()
+    {
+        m_currentTimer -= Time.deltaTime;
+        Rotate();
+        if (m_currentTimer <= 0)
+        {
+            Attack();
+        }
     }
 
     void Rotate()
@@ -93,9 +130,9 @@ public class PiraScript : BossAbstract
         {
             col.enabled = true;
         }
-        yield return new WaitForSeconds(m_attackDelay * 0.5f);
+        yield return new WaitForSeconds(currentAttackDelay * 0.5f);
         SetRayActive(true);
-        yield return new WaitForSeconds(m_attackDelay * 0.5f);
+        yield return new WaitForSeconds(currentAttackDelay * 0.5f);
         foreach (BoxCollider col in colisores)
         {
             col.enabled = false;
@@ -105,6 +142,7 @@ public class PiraScript : BossAbstract
         m_isAttacking = false;
         m_canTakeDamage = false;
         SetCurrentTimer();
+        SetState();
     }
 
     void SetRayActive(bool active)
