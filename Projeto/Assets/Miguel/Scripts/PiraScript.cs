@@ -138,6 +138,14 @@ public class PiraScript : BossAbstract
 
     IEnumerator Dead()
     {
+        PlayerCollider pc = GetComponent<PlayerCollider>();
+        if(pc.canTeleportForever)
+        {
+            pc.canTeleportForever = false;
+        } else
+        {
+            pc.canShotForever = false;
+        }
         m_rotateSpeed = 0;
         StartCoroutine(spawnSoul());
         while (true)
