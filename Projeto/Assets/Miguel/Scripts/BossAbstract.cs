@@ -8,7 +8,7 @@ public class BossAbstract : MonoBehaviour
     protected bool m_canTakeDamage;
     protected bool m_active;
 
-    void SetActive(bool active)
+    public virtual void SetActive(bool active)
     {
         m_active = active;
         m_alive = m_active;

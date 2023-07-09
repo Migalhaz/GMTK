@@ -18,7 +18,8 @@ public class TeletransportScript : MonoBehaviour
             if (lance_field)
             {
                 if (!pc.canTeleportForever && !pc.canTeleport) return;
-                transform.position = lance.transform.position;
+                transform.position = new Vector3(lance.transform.position.x,
+                    lance.transform.position.y,lance.transform.position.z);
 
                 //Destroy(lance);
                 lance.SetActive(false);
