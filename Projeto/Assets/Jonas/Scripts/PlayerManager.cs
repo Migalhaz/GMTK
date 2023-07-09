@@ -9,6 +9,7 @@ using UnityEngine.UIElements.Experimental;
         [SerializeField]float m_speed;
         Rigidbody rb;
         Vector3 m_moveDir;
+        Animator anim;
 
     [Header("Player Dash")]
     [SerializeField] float speedDash;
@@ -16,9 +17,16 @@ using UnityEngine.UIElements.Experimental;
     [SerializeField] float dashing_time;
     [SerializeField] float colldown_dashing_time;
 
+
+    private void Awake()
+    {
+        anim ??= GetComponent<Animator>();
+    }
+
     private void Start()
     {
         rb ??= GetComponent<Rigidbody>();
+
     }
 
     void FixedUpdate()
@@ -30,6 +38,8 @@ using UnityEngine.UIElements.Experimental;
     private void Update()
     {
         m_moveDir.Set(Input.GetAxisRaw("Horizontal"), 0,Input.GetAxisRaw("Vertical"));
+        anim.SetFloat("inputX", m_moveDir.x);
+        anim.SetFloat("inputZ", m_moveDir.z);
         move();
     }
 

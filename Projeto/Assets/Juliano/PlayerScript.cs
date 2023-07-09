@@ -10,8 +10,12 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] float colldown_dashing_time;
     Vector3 movement;
     Rigidbody rb;
+    Animator anim;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody>();
