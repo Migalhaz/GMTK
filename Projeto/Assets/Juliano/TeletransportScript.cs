@@ -7,10 +7,6 @@ public class TeletransportScript : MonoBehaviour
     [SerializeField] private GameObject lance;
     [SerializeField] public static bool lance_field = false;
     // Start is called before the first frame update
-    void Start()
-    {
-        lance = GameObject.Find("Sphere");
-    }
 
     // Update is called once per frame
     void Update()
