@@ -392,10 +392,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 7
+  isIdle: 1
   speedDash: 3
   dashing: 0
   dashing_time: 0.2
   colldown_dashing_time: 1
+  lastInputX: 0
+  lastInputZ: 0
 --- !u!54 &7266755008034380106
 Rigidbody:
   m_ObjectHideFlags: 0
