@@ -51,7 +51,6 @@ public class AimController : MonoBehaviour
                 isLoading = false;
                 if (loadingTime > minTime)
                 {                  
-                    Debug.Log(loadingTime);
                     ForceReverse();
                     Fire(loadingTime);
                     
@@ -65,11 +64,13 @@ public class AimController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(isLoading && loadingTime < maxTime)
+        if(isLoading)
         {
-            
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            loadingTime += loadingSpeed;
+            if (loadingTime < maxTime)
+            {
+                loadingTime += loadingSpeed;
+            }
         }
     }
 
