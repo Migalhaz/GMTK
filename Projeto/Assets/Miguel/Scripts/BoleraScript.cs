@@ -37,6 +37,7 @@ public class BoleraScript : BossAbstract
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Teste ");
         SetLookDirection();
     }
 

@@ -48,10 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 0}
-  m_moveSpeed: 90
+  m_moveSpeed: 5
   m_rotateSpeed: 1
   m_model: {fileID: 4785000775594126878}
-  m_planePosition: {x: 0, y: 0, z: 0, w: 0}
+  m_planePosition: {x: -50, y: -30, z: 62, w: 72}
   m_semNucleo: {fileID: 3003080810706731850}
 --- !u!54 &5590973765160320870
 Rigidbody:

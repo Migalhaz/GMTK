@@ -268,7 +268,8 @@ MonoBehaviour:
   m_attackRay:
   - {fileID: 1601156259}
   - {fileID: 1078694976}
-  m_attackDelay: 1
+  m_attackDelayOne: 0
+  m_attackDelayTwo: 0
   m_rangeTimer: {x: 5, y: 10}
   m_rotateSpeed: 0.4
   piramidMaterial: {fileID: 0}
@@ -1248,7 +1249,7 @@ PrefabInstance:
     - target: {fileID: 9144636927647182568, guid: eb125c1c1ea1d684197e7b84d3f3eb77,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9144636927647182569, guid: eb125c1c1ea1d684197e7b84d3f3eb77,
         type: 3}

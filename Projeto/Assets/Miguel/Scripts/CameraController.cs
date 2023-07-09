@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         m_player ??= GameObject.FindGameObjectWithTag("Player").transform;
+        ForceCamPosition();
     }
 
     // Update is called once per frame
@@ -31,6 +32,11 @@ public class CameraController : MonoBehaviour
 
         Vector3 position = Vector3.Lerp(transform.position, m_player.position + m_camPositionOffset, m_camSmothness * Time.deltaTime);
         transform.position = position;
+    }
+
+    public void ForceCamPosition()
+    {
+        transform.position = m_player.position + m_camPositionOffset;
     }
 
     void LookAt()
