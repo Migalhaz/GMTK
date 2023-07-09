@@ -89,6 +89,11 @@ public class Angel : BossAbstract
         m_activeChild.Remove(child);
         child.SetActive(false);
     }
+
+    public override void Damage()
+    {
+        //Morte
+    }
 }
 
 public static class ListExtend
