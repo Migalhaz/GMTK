@@ -123,7 +123,7 @@ MonoBehaviour:
   Path: Assets/Jonas/FMOD/Bank/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638245013873069186
+  lastModified: 638245035394160764
   FileSizes: []
   Exists: 1
 --- !u!114 &-1668810331720063380
@@ -185,7 +185,7 @@ MonoBehaviour:
   - {fileID: -3213800509608619499}
   StringsBanks:
   - {fileID: 1986087098432174977}
-  cacheTime: 638245013873069186
+  cacheTime: 638245035397596236
   cacheVersion: 131603
 --- !u!114 &917518290610297375
 MonoBehaviour:
@@ -229,7 +229,7 @@ MonoBehaviour:
   Path: Assets/Jonas/FMOD/Bank/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638245013872832951
+  lastModified: 638245035397596236
   FileSizes:
   - Name: 
     Value: 1310
