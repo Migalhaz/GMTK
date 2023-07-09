@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 using UnityEngine.UIElements.Experimental;
 
     public class PlayerManager : MonoBehaviour
@@ -22,6 +23,8 @@ using UnityEngine.UIElements.Experimental;
 
     [SerializeField] GameObject aimController;
 
+    [Header("FMOD settings")]
+    [SerializeField] EventReference audioDash;
 
     private void Awake()
     {
@@ -74,6 +77,7 @@ using UnityEngine.UIElements.Experimental;
     {
         if (dashing)
         {
+            
             isIdle = false;
             dashing_time += Time.deltaTime;
             rb.velocity = m_moveDir.normalized * speedDash * m_speed;
@@ -104,6 +108,7 @@ using UnityEngine.UIElements.Experimental;
             {
                 colldown_dashing_time = 0;
                 dashing = true;
+                RuntimeManager.PlayOneShot(audioDash);
             }
         }
     }

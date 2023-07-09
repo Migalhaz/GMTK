@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f2230def-52fe-4aba-b6d6-68c3dd2d41e5}">
+		<property name="assetPath">
+			<value>piramide laser ok.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.8734693877551019</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8f22414f-e532-49a1-8b63-433666be8461}</destination>
+		</relationship>
+	</object>
+</objects>
