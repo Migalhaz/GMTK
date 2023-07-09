@@ -23,9 +23,15 @@ public class PiraScript : BossAbstract
     float morrendoFloat = 5;
     [SerializeField] float morrendoSpeed = 0.1f;
     [SerializeField] List<Renderer> renderes;
+    [SerializeField] SkinnedMeshRenderer olho;
+    private float olhoAbertura = 100;
+    int olhoDirection = 0;
+    [SerializeField] List<BoxCollider> colisores;
 
     private void Awake()
     {
+        m_canTakeDamage = true;
+
         piramidMaterial.SetFloat("_Saturacao", 5);
         piramidMaterial.SetFloat("_alphaPiramide", 0);
         foreach (Renderer rend in renderes)
@@ -34,7 +40,6 @@ public class PiraScript : BossAbstract
         }
         SetCurrentTimer();
         SetRayActive(false);
-        StartCoroutine(Dead());
     }
 
     private void Update()
@@ -57,6 +62,11 @@ public class PiraScript : BossAbstract
                 ray.GetComponent<Renderer>().material.SetFloat("_alpha", alpha);
             }
         }
+
+        olhoAbertura += Time.deltaTime * olhoDirection * 100;
+        if (olhoAbertura < 0) olhoAbertura = 0;
+        if (olhoAbertura > 100) olhoAbertura = 100;
+        olho.SetBlendShapeWeight(0, olhoAbertura);
     }
 
     void Rotate()
@@ -77,11 +87,19 @@ public class PiraScript : BossAbstract
     {
         m_isAttacking = true;
         m_canTakeDamage = true;
+        olhoDirection = -1;
+        foreach(BoxCollider col in colisores)
+        {
+            col.enabled = true;
+        }
         yield return new WaitForSeconds(m_attackDelay * 0.5f);
         SetRayActive(true);
-        //raio ative
         yield return new WaitForSeconds(m_attackDelay * 0.5f);
-        //raio desative
+        foreach (BoxCollider col in colisores)
+        {
+            col.enabled = false;
+        }
+        olhoDirection = 1;
         SetRayActive(false);
         m_isAttacking = false;
         m_canTakeDamage = false;
@@ -110,6 +128,11 @@ public class PiraScript : BossAbstract
     void SetCurrentTimer()
     {
         m_currentTimer = Random.Range(m_rangeTimer.x, m_rangeTimer.y);
+    }
+
+    public override void Damage()
+    {
+        StartCoroutine(Dead());
     }
 
     IEnumerator Dead()
