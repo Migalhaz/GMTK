@@ -50,7 +50,7 @@ MonoBehaviour:
   m_player: {fileID: 0}
   m_moveSpeed: 90
   m_rotateSpeed: 1
-  m_model: {fileID: 0}
+  m_model: {fileID: 4785000775594126878}
   m_planePosition: {x: -90, y: 90, z: -90, w: 90}
   m_semNucleo: {fileID: 3003080810706731850}
 --- !u!54 &5590973765160320870

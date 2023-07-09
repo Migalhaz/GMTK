@@ -13,4 +13,11 @@ public class EnemyDeathColllider : MonoBehaviour
         m_bossScript.Damage();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("colidiu");
+        if (!collision.gameObject.CompareTag("Spear")) return;
+        print("com a bola");
+        m_bossScript.Damage();
+    }
 }

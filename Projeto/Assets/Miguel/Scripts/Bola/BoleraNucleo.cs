@@ -5,10 +5,6 @@ using UnityEngine;
 public class BoleraNucleo : BoleraScript
 {
     int m_life = 5;
-    private void Start()
-    {
-        Damage();
-    }
     public override void Damage()
     {
         base.Damage();

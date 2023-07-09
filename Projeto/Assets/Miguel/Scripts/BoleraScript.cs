@@ -35,7 +35,7 @@ public class BoleraScript : BossAbstract
         transform.Translate(m_moveSpeed * Time.deltaTime * Vector3.forward);
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         SetLookDirection();
     }

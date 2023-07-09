@@ -39,7 +39,7 @@ using UnityEngine.UIElements.Experimental;
         m_moveDir.Set(Input.GetAxisRaw("Horizontal"), 0,Input.GetAxisRaw("Vertical"));
         lastInputX = (int)m_moveDir.x;
         lastInputZ = (int)m_moveDir.z;
-        print(lastInputX + lastInputZ);
+        //print(lastInputX + lastInputZ);
         move();
         if (IsMoving())
         {
@@ -64,7 +64,7 @@ using UnityEngine.UIElements.Experimental;
     {
         anim.SetFloat("inputX", m_moveDir.x);
         anim.SetFloat("inputZ", m_moveDir.z);
-        anim.SetBool("isIdle", isIdle);
+        //anim.SetBool("isIdle", isIdle);
     }
 
     void move()
