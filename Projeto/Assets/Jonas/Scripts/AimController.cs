@@ -32,6 +32,7 @@ public class AimController : MonoBehaviour
     [SerializeField] float speedBase;
     [SerializeField] int speedReduce;
 
+
     private void Update()
     {
         inputX = (int)Input.GetAxisRaw("Horizontal");

@@ -12,10 +12,7 @@ public class PlayerScript : MonoBehaviour
     Rigidbody rb;
     Animator anim;
 
-    private void Awake()
-    {
-        anim = GetComponent<Animator>();
-    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();

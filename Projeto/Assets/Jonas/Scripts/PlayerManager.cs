@@ -29,18 +29,13 @@ using UnityEngine.UIElements.Experimental;
 
     }
 
-    void FixedUpdate()
-    {
-        
-        dash();
-    }
-
     private void Update()
     {
         m_moveDir.Set(Input.GetAxisRaw("Horizontal"), 0,Input.GetAxisRaw("Vertical"));
         anim.SetFloat("inputX", m_moveDir.x);
         anim.SetFloat("inputZ", m_moveDir.z);
         move();
+        dash();
     }
 
     void move()

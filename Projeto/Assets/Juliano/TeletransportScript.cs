@@ -14,7 +14,7 @@ public class TeletransportScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             transform.position = lance.transform.position;
             lance.SetActive(false);
