@@ -97,7 +97,7 @@ public class AimController : MonoBehaviour
     {
         if (isLoading) { return; }
         spear.transform.position = GetSpot();
-        spear.transform.rotation = player.transform.rotation;
+        spear.transform.rotation = Quaternion.Euler(0, player.transform.rotation.eulerAngles.y, 0);
         spear.SetActive(true);
         TeletransportScript.lance_field = true;
         Physics.IgnoreCollision(GetComponentInParent<Collider>(), spear.GetComponent<Collider>());
