@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 20
   player: {fileID: 499391910}
-  spear: {fileID: 0}
+  spear: {fileID: 321363626}
   minTime: 1
   maxTime: 5
   loadingSpeed: 0.1

@@ -5,6 +5,7 @@ using UnityEngine;
 public class TeletransportScript : MonoBehaviour
 {
     [SerializeField] private GameObject lance;
+    [SerializeField] public static bool lance_field = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +17,14 @@ public class TeletransportScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            transform.position = lance.transform.position;
-            lance.SetActive(false);
+            if (lance_field)
+            {
+                transform.position = lance.transform.position;
+
+                //Destroy(lance);
+                lance.SetActive(false);
+                lance_field = false;
+            }
         }
     }
 }

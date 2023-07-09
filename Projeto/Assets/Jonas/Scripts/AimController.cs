@@ -95,6 +95,7 @@ public class AimController : MonoBehaviour
         if (isLoading) { return; }
         spear.transform.position = GetSpot();
         spear.SetActive(true);
+        TeletransportScript.lance_field = true;
         Physics.IgnoreCollision(GetComponentInParent<Collider>(), spear.GetComponent<Collider>());
 
         if(inputX == 0 && inputY == 0)
