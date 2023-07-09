@@ -11,6 +11,7 @@ using UnityEngine.UIElements.Experimental;
         Rigidbody rb;
         Vector3 m_moveDir;
         Animator anim;
+
         
 
     [Header("Player Dash")]
@@ -19,9 +20,6 @@ using UnityEngine.UIElements.Experimental;
     [SerializeField] float dashing_time;
     [SerializeField] float colldown_dashing_time;
 
-    [Header("Player Anim config")]
-    [SerializeField] int lastInputX;
-    [SerializeField] int lastInputZ;
 
     private void Awake()
     {
@@ -37,8 +35,6 @@ using UnityEngine.UIElements.Experimental;
     private void Update()
     {
         m_moveDir.Set(Input.GetAxisRaw("Horizontal"), 0,Input.GetAxisRaw("Vertical"));
-        lastInputX = (int)m_moveDir.x;
-        lastInputZ = (int)m_moveDir.z;
         //print(lastInputX + lastInputZ);
         move();
         if (IsMoving())
@@ -64,7 +60,7 @@ using UnityEngine.UIElements.Experimental;
     {
         anim.SetFloat("inputX", m_moveDir.x);
         anim.SetFloat("inputZ", m_moveDir.z);
-        //anim.SetBool("isIdle", isIdle);
+        anim.SetBool("isIdle", isIdle);
     }
 
     void move()
@@ -83,9 +79,8 @@ using UnityEngine.UIElements.Experimental;
         else
         {
             colldown_dashing_time += Time.deltaTime;
-            rb.velocity = m_moveDir * m_speed;                           
-            
-            
+            rb.velocity = m_moveDir * m_speed;
+                       
         }
     }
 

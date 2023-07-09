@@ -60,6 +60,8 @@ public class AimController : MonoBehaviour
             }
             
         }
+
+        transform.parent.LookAt(GetSpot());
     }
 
     private void FixedUpdate()
