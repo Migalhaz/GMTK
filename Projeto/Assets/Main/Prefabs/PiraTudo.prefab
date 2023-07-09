@@ -785,6 +785,7 @@ MonoBehaviour:
   colisores:
   - {fileID: 95889848}
   - {fileID: 1194234349}
+  soul: {fileID: 3753000548239558228, guid: d306c307c57917d4da39ca191a4237fc, type: 3}
 --- !u!1 &646568307709914423
 GameObject:
   m_ObjectHideFlags: 0

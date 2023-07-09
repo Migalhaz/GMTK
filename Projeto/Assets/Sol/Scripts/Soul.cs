@@ -5,11 +5,15 @@ using UnityEngine.AI;
 
 public class Soul : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    GameObject player;
     [SerializeField] float speed;
     [SerializeField] NavMeshAgent agent;
     [SerializeField, Min(0.01f)] float reduceY;
 
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+    }
 
     private void Update()
     {

@@ -27,6 +27,7 @@ public class PiraScript : BossAbstract
     private float olhoAbertura = 100;
     int olhoDirection = 0;
     [SerializeField] List<BoxCollider> colisores;
+    [SerializeField] GameObject soul;
 
     private void Awake()
     {
@@ -137,7 +138,9 @@ public class PiraScript : BossAbstract
 
     IEnumerator Dead()
     {
-        while(true)
+        m_rotateSpeed = 0;
+        StartCoroutine(spawnSoul());
+        while (true)
         {
             morrendoFloat -= morrendoSpeed;
             if (morrendoFloat > 0)
@@ -150,5 +153,12 @@ public class PiraScript : BossAbstract
             }
             yield return new WaitForSeconds(0.05f);
         }
+    }
+
+    IEnumerator spawnSoul()
+    {
+        yield return new WaitForSeconds(5);
+        Instantiate(soul, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
