@@ -9,7 +9,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] Vector3 m_camRotation;
     [SerializeField, Range(0, 1f)] float m_deadZone;
     [SerializeField, Range(1, 10f)] float m_camSmothness;
-    bool shaking;
     void Start()
     {
         m_player ??= GameObject.FindGameObjectWithTag("Player").transform;
