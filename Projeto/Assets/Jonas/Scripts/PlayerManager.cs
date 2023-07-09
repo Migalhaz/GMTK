@@ -5,11 +5,13 @@ using UnityEngine.UIElements.Experimental;
 
     public class PlayerManager : MonoBehaviour
     {
-        [Header("Player Attributes")]
-        [SerializeField]float m_speed;
+    [Header("Player Attributes")]
+    [SerializeField] float m_speed;
+        [SerializeField] bool isIdle = true;
         Rigidbody rb;
         Vector3 m_moveDir;
         Animator anim;
+        
 
     [Header("Player Dash")]
     [SerializeField] float speedDash;
@@ -17,6 +19,9 @@ using UnityEngine.UIElements.Experimental;
     [SerializeField] float dashing_time;
     [SerializeField] float colldown_dashing_time;
 
+    [Header("Player Anim config")]
+    [SerializeField] int lastInputX;
+    [SerializeField] int lastInputZ;
 
     private void Awake()
     {
@@ -32,16 +37,41 @@ using UnityEngine.UIElements.Experimental;
     private void Update()
     {
         m_moveDir.Set(Input.GetAxisRaw("Horizontal"), 0,Input.GetAxisRaw("Vertical"));
+        lastInputX = (int)m_moveDir.x;
+        lastInputZ = (int)m_moveDir.z;
+        print(lastInputX + lastInputZ);
+        move();
+        if (IsMoving())
+        {
+            isIdle = true;
+        }
+        else
+        {
+            isIdle = false;
+        }
+        dash();
+        updateAnims();
+        
+    }
+
+    private bool IsMoving()
+    {
+        //Debug.Log("velocity: "+ rb.velocity);
+        return rb.velocity == Vector3.zero;
+    }
+
+    private void updateAnims()
+    {
         anim.SetFloat("inputX", m_moveDir.x);
         anim.SetFloat("inputZ", m_moveDir.z);
-        move();
-        dash();
+        anim.SetBool("isIdle", isIdle);
     }
 
     void move()
     {
         if (dashing)
         {
+            isIdle = false;
             dashing_time += Time.deltaTime;
             rb.velocity = m_moveDir.normalized * speedDash * m_speed;
             if (dashing_time >= 0.2f)
@@ -53,7 +83,9 @@ using UnityEngine.UIElements.Experimental;
         else
         {
             colldown_dashing_time += Time.deltaTime;
-            rb.velocity = m_moveDir * m_speed;
+            rb.velocity = m_moveDir * m_speed;                           
+            
+            
         }
     }
 
