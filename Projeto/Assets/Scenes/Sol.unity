@@ -634,7 +634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010578566}
   m_LocalRotation: {x: 0.56464744, y: -0, z: -0, w: 0.8253323}
-  m_LocalPosition: {x: 0, y: 37.4, z: -51.8}
+  m_LocalPosition: {x: 0, y: 24.12, z: -12.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -648,25 +648,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 95889848, guid: bc7a00af2f000bc4784d3edad10ba665, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021920383, guid: bc7a00af2f000bc4784d3edad10ba665, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021920385, guid: bc7a00af2f000bc4784d3edad10ba665, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194234349, guid: bc7a00af2f000bc4784d3edad10ba665, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2467771632335366853, guid: bc7a00af2f000bc4784d3edad10ba665,
         type: 3}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2467771632335366853, guid: bc7a00af2f000bc4784d3edad10ba665,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2467771632335366853, guid: bc7a00af2f000bc4784d3edad10ba665,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2467771632335366853, guid: bc7a00af2f000bc4784d3edad10ba665,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2467771632335366853, guid: bc7a00af2f000bc4784d3edad10ba665,
         type: 3}
@@ -717,11 +718,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2467771632335366853, guid: bc7a00af2f000bc4784d3edad10ba665,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4152286246586400990, guid: bc7a00af2f000bc4784d3edad10ba665,
         type: 3}
