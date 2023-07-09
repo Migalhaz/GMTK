@@ -14,6 +14,7 @@ public class BoleraScript : BossAbstract
 
     void Start()
     {
+        m_player ??= GameObject.FindGameObjectWithTag("Player").transform;
         SetLookDirection();
     }
 
