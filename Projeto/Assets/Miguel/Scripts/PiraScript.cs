@@ -57,6 +57,7 @@ public class PiraScript : BossAbstract
 
     private void Update()
     {
+        if (!m_active) return; 
         switch (m_currentState)
         {
             case State.One:
@@ -93,8 +94,6 @@ public class PiraScript : BossAbstract
         {
             Attack();
         }
-
-        
     }
 
     void StateTwo()
@@ -177,10 +176,11 @@ public class PiraScript : BossAbstract
     IEnumerator Dead()
     {
         PlayerCollider pc = GetComponent<PlayerCollider>();
-        if(pc.canTeleportForever)
+        if (pc.canTeleportForever)
         {
             pc.canTeleportForever = false;
-        } else
+        }
+        else
         {
             pc.canShotForever = false;
         }
