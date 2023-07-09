@@ -10,7 +10,6 @@ public class EnemyDeathColllider : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Spear")) return;
-
         m_bossScript.Damage();
     }
 
