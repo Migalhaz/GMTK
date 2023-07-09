@@ -8,6 +8,7 @@ public class Angel : BossAbstract
     [SerializeField] float m_moveSpeed;
 
     [Header("Childs")]
+    [SerializeField] float m_timeToSpawnNewChild;
     [SerializeField] Transform m_childPivot;
     [SerializeField] float m_rotateSpeed;
     [SerializeField] List<GameObject> m_defaultChilds;
@@ -16,6 +17,9 @@ public class Angel : BossAbstract
     void Start()
     {
         m_player ??= GameObject.FindGameObjectWithTag("Player").transform;
+        m_childPivot.parent = null;
+        StartChild();
+        InvokeRepeating(nameof(CreateRandomChild), m_timeToSpawnNewChild, m_timeToSpawnNewChild);
     }
 
     // Update is called once per frame
@@ -23,6 +27,7 @@ public class Angel : BossAbstract
     {
         SetLook();
         Move();
+        RotateChilds();
     }
 
     void Move()
@@ -33,13 +38,29 @@ public class Angel : BossAbstract
     void RotateChilds()
     {
         float newAngle = m_childPivot.eulerAngles.y + m_rotateSpeed;
-
+        m_childPivot.position = transform.position;
+        m_childPivot.eulerAngles = Vector3.up * newAngle;
     }
 
     void SetLook()
     {
         Vector3 target = new(m_player.position.x, transform.position.y, m_player.position.z);
         transform.LookAt(target);
+    }
+
+    void StartChild()
+    {
+        foreach (GameObject child in m_childs)
+        {
+            if (m_defaultChilds.Contains(child))
+            {
+                child.SetActive(true);
+                m_activeChild.Add(child);
+                continue;
+            }
+            child.SetActive(false);
+        }
+        
     }
 
     void CreateRandomChild()
@@ -50,7 +71,7 @@ public class Angel : BossAbstract
         }
 
         GameObject i = m_childs.GetRandom();
-        if (m_activeChild.Find(x => x == i))
+        if (m_activeChild.Contains(i))
         {
             CreateRandomChild();
             return;
@@ -61,7 +82,7 @@ public class Angel : BossAbstract
 
     public void KillChild(GameObject child)
     {
-        if (!m_activeChild.Find(x => x == child))
+        if (!m_activeChild.Contains(child))
         {
             return;
         }
