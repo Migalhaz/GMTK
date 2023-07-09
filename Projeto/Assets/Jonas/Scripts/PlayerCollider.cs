@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
-    [SerializeField] bool canShot;
-    [SerializeField] bool canTeleport;
+    public bool canShot;
+    public bool canShotForever;
+    public bool canTeleport;
+    public bool canTeleportForever;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnCollisionEnter(Collision collision)
     {

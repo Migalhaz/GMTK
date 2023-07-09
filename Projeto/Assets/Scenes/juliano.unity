@@ -456,6 +456,7 @@ MonoBehaviour:
   isLoading: 0
   speedBase: 5
   speedReduce: 10
+  pc: {fileID: 0}
 --- !u!1 &273281339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,6 +1224,7 @@ GameObject:
   - component: {fileID: 499391912}
   - component: {fileID: 499391911}
   - component: {fileID: 499391917}
+  - component: {fileID: 499391918}
   m_Layer: 0
   m_Name: Player (2)
   m_TagString: Player
@@ -1242,7 +1244,7 @@ CapsuleCollider:
   m_Enabled: 1
   m_Radius: 0.2
   m_Height: 0.98
-  m_Direction: 1
+  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &499391912
 Rigidbody:
@@ -1383,6 +1385,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lance: {fileID: 321363626}
+  pc: {fileID: 499391918}
+--- !u!114 &499391918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499391910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d864860352117649928b9782fea7815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canShot: 1
+  canShotForever: 1
+  canTeleport: 0
+  canTeleportForever: 1
 --- !u!1 &538758324 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6763858364670572316, guid: e2d5724510a961c4d801c4aba8039965,
@@ -1677,6 +1696,7 @@ MonoBehaviour:
   isLoading: 0
   speedBase: 5
   speedReduce: 10
+  pc: {fileID: 499391918}
 --- !u!1 &660216497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,6 +2007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lance: {fileID: 0}
+  pc: {fileID: 0}
 --- !u!1 &733236485
 GameObject:
   m_ObjectHideFlags: 0
@@ -4066,7 +4087,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4652,6 +4673,7 @@ MonoBehaviour:
   isLoading: 0
   speedBase: 5
   speedReduce: 10
+  pc: {fileID: 0}
 --- !u!4 &1698102752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3364567670365078825, guid: 85a518dd254bf1145ab6fa7a6ed82ee8,
