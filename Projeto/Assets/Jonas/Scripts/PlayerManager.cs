@@ -11,7 +11,7 @@ using UnityEngine.UIElements.Experimental;
         Rigidbody rb;
         Vector3 m_moveDir;
         Animator anim;
-
+        [SerializeField] float gravityForce = 2f;
         
 
     [Header("Player Dash")]
@@ -19,6 +19,8 @@ using UnityEngine.UIElements.Experimental;
     [SerializeField] bool dashing = false;
     [SerializeField] float dashing_time;
     [SerializeField] float colldown_dashing_time;
+
+    [SerializeField] GameObject aimController;
 
 
     private void Awake()
@@ -48,6 +50,11 @@ using UnityEngine.UIElements.Experimental;
         dash();
         updateAnims();
         
+    }
+
+    private void FixedUpdate()
+    {
+        Gravity();
     }
 
     private bool IsMoving()
@@ -84,9 +91,14 @@ using UnityEngine.UIElements.Experimental;
         }
     }
 
+    void Gravity()
+    {
+        rb.AddForce(gravityForce * Physics.gravity, ForceMode.Force);
+    }
+
     void dash()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             if (!dashing && colldown_dashing_time >= 1f)
             {

@@ -39,14 +39,14 @@ public class AimController : MonoBehaviour
         inputY = (int)Input.GetAxisRaw("Vertical");
         
 
-        if(Input.GetKey(KeyCode.C))
+        if(Input.GetKey(KeyCode.Space))
         {
             isLoading = true;
             
         }
         else
         {
-            if(Input.GetKeyUp(KeyCode.C))
+            if(Input.GetKeyUp(KeyCode.Space))
             {
                 isLoading = false;
                 if (loadingTime > minTime)
@@ -97,6 +97,7 @@ public class AimController : MonoBehaviour
     {
         if (isLoading) { return; }
         spear.transform.position = GetSpot();
+        spear.transform.rotation = player.transform.rotation;
         spear.SetActive(true);
         TeletransportScript.lance_field = true;
         Physics.IgnoreCollision(GetComponentInParent<Collider>(), spear.GetComponent<Collider>());
@@ -108,6 +109,7 @@ public class AimController : MonoBehaviour
         }
         else
         {
+            
             spear.GetComponent<Rigidbody>().velocity = Vector3.zero;
             spear.GetComponent<Rigidbody>().AddForce(new Vector3(inputX * bulletSpeed * speedBase, 0, inputY * bulletSpeed * speedBase), ForceMode.Impulse);
         }
