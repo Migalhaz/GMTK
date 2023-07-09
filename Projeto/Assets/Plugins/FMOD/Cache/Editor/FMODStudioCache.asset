@@ -1,5 +1,158 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6224297571165174066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/lanca
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/lanca
+  Guid:
+    Data1: 1877908109
+    Data2: 1233264463
+    Data3: -898912107
+    Data4: 1573833939
+  Banks:
+  - {fileID: -3213800509608619499}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 305
+--- !u!114 &-6051593802105021243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/passo grama fast
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/passo grama fast
+  Guid:
+    Data1: -603804367
+    Data2: 1185344771
+    Data3: 1820804511
+    Data4: -1276502944
+  Banks:
+  - {fileID: -3213800509608619499}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 468
+--- !u!114 &-5422843179892446798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/piramide laser ok
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/piramide laser ok
+  Guid:
+    Data1: 1764412823
+    Data2: 1127308553
+    Data3: -2019611757
+    Data4: 808518022
+  Banks:
+  - {fileID: -3213800509608619499}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2873
+--- !u!114 &-4175229198164199274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/passo grama 1
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/passo grama 1
+  Guid:
+    Data1: 276724659
+    Data2: 1141080011
+    Data3: -1796314219
+    Data4: -1608439395
+  Banks:
+  - {fileID: -3213800509608619499}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 731
+--- !u!114 &-3213800509608619499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Jonas/FMOD/Bank/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638245013873069186
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-1668810331720063380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/passo piso fast
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/passo piso fast
+  Guid:
+    Data1: -856367533
+    Data2: 1090568479
+    Data3: -970151010
+    Data4: 362646316
+  Banks:
+  - {fileID: -3213800509608619499}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 574
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,10 +165,207 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  EditorBanks: []
-  EditorEvents: []
+  EditorBanks:
+  - {fileID: 1986087098432174977}
+  - {fileID: -3213800509608619499}
+  EditorEvents:
+  - {fileID: 8573881240106649943}
+  - {fileID: 8628327796548555064}
+  - {fileID: -6051593802105021243}
+  - {fileID: 4030684643636040310}
+  - {fileID: -1668810331720063380}
+  - {fileID: 3126337963438380355}
+  - {fileID: -6224297571165174066}
+  - {fileID: -5422843179892446798}
+  - {fileID: 5795844974840892628}
+  - {fileID: -4175229198164199274}
+  - {fileID: 917518290610297375}
   EditorParameters: []
-  MasterBanks: []
-  StringsBanks: []
-  cacheTime: 0
+  MasterBanks:
+  - {fileID: -3213800509608619499}
+  StringsBanks:
+  - {fileID: 1986087098432174977}
+  cacheTime: 638245013873069186
   cacheVersion: 131603
+--- !u!114 &917518290610297375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/New Folder/game jam julho piramide
+  m_EditorClassIdentifier: 
+  Path: event:/New Folder/game jam julho piramide
+  Guid:
+    Data1: 1385246187
+    Data2: 1275100338
+    Data3: -854456910
+    Data4: -1870836130
+  Banks:
+  - {fileID: -3213800509608619499}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 64615
+--- !u!114 &1986087098432174977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Jonas/FMOD/Bank/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638245013872832951
+  FileSizes:
+  - Name: 
+    Value: 1310
+  Exists: 1
+--- !u!114 &3126337963438380355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/New Folder/game jam gameplay
+  m_EditorClassIdentifier: 
+  Path: event:/New Folder/game jam gameplay
+  Guid:
+    Data1: 359264358
+    Data2: 1282318958
+    Data3: 1306110365
+    Data4: -692206355
+  Banks:
+  - {fileID: -3213800509608619499}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 62307
+--- !u!114 &4030684643636040310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/piramide morte 1
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/piramide morte 1
+  Guid:
+    Data1: -2116541616
+    Data2: 1181534721
+    Data3: -953943633
+    Data4: 375837242
+  Banks:
+  - {fileID: -3213800509608619499}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2272
+--- !u!114 &5795844974840892628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/passo piso
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/passo piso
+  Guid:
+    Data1: 1197292952
+    Data2: 1279957562
+    Data3: -766502757
+    Data4: 273018739
+  Banks:
+  - {fileID: -3213800509608619499}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 705
+--- !u!114 &8573881240106649943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/piramide rotacao 2
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/piramide rotacao 2
+  Guid:
+    Data1: 833864968
+    Data2: 1331230134
+    Data3: 863804296
+    Data4: -2006952394
+  Banks:
+  - {fileID: -3213800509608619499}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1985
+--- !u!114 &8628327796548555064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sfx/dash
+  m_EditorClassIdentifier: 
+  Path: event:/Sfx/dash
+  Guid:
+    Data1: -1405955547
+    Data2: 1112279016
+    Data3: 202037146
+    Data4: -1591651402
+  Banks:
+  - {fileID: -3213800509608619499}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 522
